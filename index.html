@@ -14,7 +14,7 @@
 //            if (navigator.geolocation) {
 //			navigator.geolocation.getCurrentPosition(showPosition);
         navigator.geolocation.getCurrentPosition(function (position) {
-            url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
+            url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
             console.log(url);
             $.ajax({
                 method: 'get',
