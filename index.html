@@ -12,9 +12,9 @@
 //        console.log(navigator.geolocation);
 //        function getLocation() {
 //            if (navigator.geolocation) {
-//			navigator.geolocation.getCurrentPosition(showPosition);
+//          navigator.geolocation.getCurrentPosition(showPosition);
         navigator.geolocation.getCurrentPosition(function (position) {
-            url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
+            url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
             console.log(url);
             $.ajax({
                 method: 'get',
@@ -22,20 +22,16 @@
                 dataType: "json",
                 success: function(data){
                     let result = data.results[0];
-                    let postal = (data.results[0].address_components[7].long_name);
                     let fullAddress = result.formatted_address;
 
-                    let output = '<p><h3>Full address: </h3>' + fullAddress + '</p>';
-                    output += '<p><h3>Postal: </h3>' + postal + '</p>';
-
-                    $('#demo').html(output);
+                    $('#demo').html(fullAddress);
 
                 },
                 error: function(err){
                     console.log(err);
                 }
             });
-//				console.log('ff');
+//              console.log('ff');
         });
 //            } else {
 //                x.innerHTML = "Geolocation is not supported by this browser.";
@@ -44,16 +40,16 @@
 
 //        console.log(url);
 
-//	function showPosition(position) {
-//		url ='http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
-//		console.log(url);
-//		x.innerHTML = "Latitude: " + position.coords.latitude +
-//				"<br>Longitude: " + position.coords.longitude +  "<br>" + position.coords.latitude + ',' + position.coords.longitude;
-//		url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
-//	}
+//  function showPosition(position) {
+//      url ='http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
+//      console.log(url);
+//      x.innerHTML = "Latitude: " + position.coords.latitude +
+//              "<br>Longitude: " + position.coords.longitude +  "<br>" + position.coords.latitude + ',' + position.coords.longitude;
+//      url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude.toString() + ',' + position.coords.longitude.toString();
+//  }
 
-//	console.log(url);
-//	http://maps.googleapis.com/maps/api/geocode/json?latlng=49.2855768,-123.1114421
+//  console.log(url);
+//  http://maps.googleapis.com/maps/api/geocode/json?latlng=49.2855768,-123.1114421
     });
 </script>
 
